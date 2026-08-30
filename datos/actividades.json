@@ -1,0 +1,18 @@
+[
+  {
+    "nombre": "Proyecto: Unidad Didactica Paseo de Cine",
+    "lugar": "Ubicación: Plaza el Aborigen",
+    "fecha": "2026-08-28",
+    "gratuita": true,
+    "hora": "Hora_Entrada: 10:00",
+    "asistencia": "Asistencia: 50 personas"
+  },
+  {
+    "nombre": "Pelicula: Toy Story 5",
+    "lugar": "Genero: Animación",
+    "fecha": "2026-08-28",
+    "gratuita": false,
+    "hora": "Hora_Salida: 11:00",
+    "asistencia": "Responsable: Héctor Santiago orellana"
+  }
+]
