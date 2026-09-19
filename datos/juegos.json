@@ -1,0 +1,38 @@
+[
+  {
+    "titulo": "Catan",
+    "editorial": "Devir",
+    "anio": 1995,
+    "jugadoresMin": 3,
+    "jugadoresMax": 4,
+    "categorias": ["Estrategia", "Gestión de recursos"],
+    "disponible": true
+  },
+  {
+    "titulo": "Carcassonne",
+    "editorial": "Hans im Glück",
+    "anio": 2000,
+    "jugadoresMin": 2,
+    "jugadoresMax": 5,
+    "categorias": ["Colocación de losetas", "Familiar"],
+    "disponible": false
+  },
+  {
+    "titulo": "Dixit",
+    "editorial": "Libellud",
+    "anio": 2008,
+    "jugadoresMin": 3,
+    "jugadoresMax": 6,
+    "categorias": ["Deducción", "Cartas"],
+    "disponible": true
+  },
+  {
+    "titulo": "Pandemic",
+    "editorial": "Z-Man Games",
+    "anio": 2008,
+    "jugadoresMin": 2,
+    "jugadoresMax": 4,
+    "categorias": ["Cooperativo", "Estrategia"],
+    "disponible": true
+  }
+]

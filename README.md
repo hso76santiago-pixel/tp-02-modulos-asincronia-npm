@@ -1,50 +1,72 @@
-# Trabajo práctico 02 
- Módulos: asincronía y NPM
-##  Sistema de Gestión de Actividades - Cine Teatro Valle Viejo
-Proyecto desarrollado en Node.js para la lectura, procesamiento y generación de informes de actividades a partir de datos en formato JSON de manera asíncrona.
-##  Descripción del Proyecto
-Este sistema lee un conjunto de datos sobre las actividades programadas en el Cine Teatro Valle Viejo desde un archivo `.json`, procesa la información y genera automáticamente un archivo de texto (`agenda.txt`) con un informe detallado y formateado.
-## Tecnologías Utilizadas
-Node.js: Entorno de ejecución para JavaScript.
-Módulos nativos (`fs`, `path`): Manejo del sistema de archivos y rutas de manera asíncrona.
-JSON: Formato para el almacenamiento y estructuración de los datos de las actividades.
-## Estructura del Proyecto
+# Trabajo práctico 02 - Catálogo de Juegos de Mesa
 
+## Descripción
+Aplicación de consola desarrollada en Node.js que lee un catálogo de juegos de mesa desde un archivo JSON, procesa y trasforma sus registros, y genera un informe en formato de texto plano de manera asíncrona.
+
+## Instalación
+npm install
+npm start
+npm install picocolors
+## Configurar al menos estos scripts:
+"type": "commonjs",
+"scripts": {
+"start": "node src/index.js",
+"check": "node --check src/index.js && node --check src/archivos.js && node --check src/juegos.js"
+}
+## Estructura 
 tp-02-modulos-asincronia-npm/
-├── datos/
-│   └── actividades.json
-├── node_modules/
-├── salida/
-│   └── agenda.txt
-├── src/
-│   ├── archivos.js
-│   ├── index.js
-│   └── informe.js
-├── .gitignore
-├── package-lock.json
-├── package.json
-└── README.md
-## Módulo archivos.js
-Este módulo debe ocuparse exclusivamente del acceso al sistema de archivos
-## Módulo informe.js
-Este módulo debe transformar los datos del dominio y devolver el informe completo como texto
-## Módulo index.js
-Este módulo debe coordinar la aplicación.
-## Diferencia entre exportar y ejecutar una función:
- Exportar una función, significa ponerla a disposición para que otros archivos de la aplicación puedan importarla y usarla. 
- Ejecutar una función, significa invocarla en ese preciso instante para que realice su trabajo y devuelva un resultado
-## Qué representa la promesa de fs.readFile: 
- Representa una operación asíncrona en curso para leer un archivo en el disco. Al resolverse, la promesa entrega el contenido del archivo (generalmente como un buffer o texto); si falla (por ejemplo, si el archivo no existe), se rechaza devolviendo el error correspondiente
-## Por qué await va dentro de una función async: 
- En JavaScript, await pausa la ejecución dentro del contexto de esa función hasta que una promesa se resuelva o rechace. La palabra clave async habilita este comportamiento asíncrono y le indica al motor de JS que la función devolverá implícitamente una promesa
-## Errores que pueden llegar al catch de main: 
- Puede recibir errores de lectura/escritura en disco (archivo .json inexistente, falta de permisos en la carpeta salida), errores de sintaxis al parsear el JSON (JSON.parse con formato inválido), o errores de código (intentar acceder a propiedades de algo que es undefined)
-## Por qué no se publica node_modules: 
-node_modules contiene miles de archivos pesados que cambian según el sistema operativo.
-Se publican package.json (que lista las librerías necesarias) y package-lock.json (que guarda las versiones exactas instaladas) para que cualquier persona pueda recrear la misma carpeta ejecutando simplemente npm install, manteniendo el repositorio liviano
-## Uso de picocolors y su presencia en dependencies: 
-picocolors se utiliza para darle formato de color a los mensajes impresos en la terminal de la consola. Modifica el texto en tiempo de ejecución de la aplicación, por lo que forma parte del código de producción y debe figurar en dependencies (y no en devDependencies)
-## Datos Personales:
-alumno: Héctor Santiago Orellana Gonzales
-Correo Electrónico: hso76santiago@gmail.com
-Teléfono: 3834-801585
+|-- datos/
+| `-- juegos.json
+|-- src/
+| |-- archivos.js
+| |-- juegos.js
+| `-- index.js
+|-- salida/
+| `-- catalogo-juegos.txt
+|-- .gitignore
+|-- package.json
+|-- package-lock.json
+`-- README.md
+
+## ¿Qué diferencia existe entre exportar una función y ejecutarla?
+Exportar una función significa: ponerla a disposición de otros módulos o archivos dentro de tu proyecto. No hace correr el código interno de la función en ese momento; solo la "publica" o la "comparte" para que otro archivo pueda importarla y usarla.
+
+Ejecutar una función (o invocarla): significa indicarle al programa que corra las instrucciones escritas dentro de ella en ese preciso punto de la ejecución.
+## La promesa devuelta por fs.readFile (al usar la versión con promesas de Node.js, como fs.promises.readFile o import fs from 'fs/promises'):
+Representa la operación asíncrona de lectura de un archivo en el sistema de archivos.
+
+Representa una garantía futura de que el archivo se leerá sin bloquear la ejecución del resto del programa, y cambiará de estado según el resultado.
+## ¿Por qué await se utiliza dentro de una función async ?:
+
+await se utiliza dentro de una función async por dos razones fundamentales: el diseño del motor de JavaScript para no bloquear el programa y la necesidad de tener una sintaxis limpia para manejar operaciones asíncronas.
+## Al bloque catch de la función main (o del punto de entrada de tu aplicación) llegarán todos los errores no capturados que ocurran durante la cadena de ejecución asíncrona de las funciones que main ejecute.
+
+Si un error ocurre en una función profunda de tu código y ninguna función intermedia lo envuelve en su propio try/catch, este irá "subiendo" en la pila de llamadas (stack trace) hasta ser atrapado por el catch final de main.
+
+## ¿Por qué se publican package.json y package-lock.json , pero no node_modules ?
+En términos sencillos: package.json y package-lock.json son las instrucciones de la receta, mientras que node_modules es el platillo ya cocinado. Solo necesitas compartir las instrucciones para que cualquiera pueda cocinar exactamente lo mismo.
+
+node_modules es gigante y pesado
+Las dependencias modernas pueden incluir decenas de miles de archivos pequeños que suman cientos de megabytes (o gigabytes).
+
+Git ineficiente: Subir o clonar un repositorio con node_modules llevaría minutos u horas.
+
+Espacio consumido: Servidores de Git como GitHub o GitLab colapsarían o te cobrarían extra por almacenamiento innecesario.
+
+Dependencia de la plataforma (Binarios compilados)
+Muchas librerías contienen código nativo en C o C++ que se compila al momento de la instalación para el sistema operativo donde corre (node-gyp).
+
+Si se sube un node_modules instalado en macOS o Windows e intentas ejecutarlo directamente en un servidor de despliegue con Linux, la aplicación fallará porque los binarios no son compatibles.
+
+Al no incluir node_modules, obligas a que cada entorno construya sus dependencias para su propio sistema operativo.
+
+Redundancia
+Los paquetes que descargas ya están almacenados y optimizados en un registro público y global (el registro oficial de NPM). No tiene sentido duplicar millones de copias de la misma librería en cada repositorio personal cuando puedes descargarla directamente de la fuente oficial en segundos.
+
+## ¿Para qué se utiliza picocolors y por qué figura en dependencies ?
+
+# picocolors es una librería de JavaScript extremadamente ligera y rápida que se utiliza para dar formato y color al texto en la terminal/consola (usando códigos de escape ANSI).
+
+Se usa principalmente en herramientas de línea de comandos (CLI) o scripts de compilación para mostrar información de forma visualmente clara: resaltando errores en rojo, advertencias en amarillo o estados de éxito en verde.
+
+JavaScript

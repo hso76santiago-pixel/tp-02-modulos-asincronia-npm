@@ -1,0 +1,8 @@
+Catalogos de los Juegos de Mesa
+=======================================
+Cantidad de juego: 4
+
+Catan (1995) | Editorial: Devir | Jugadores: 3-4 | Categorías: Estrategia,Gestión de recursos | Estado:  No disponoble
+Carcassonne (2000) | Editorial: Hans im Glück | Jugadores: 2-5 | Categorías: Colocación de losetas,Familiar | Estado:  No disponoble
+Dixit (2008) | Editorial: Libellud | Jugadores: 3-6 | Categorías: Deducción,Cartas | Estado:  No disponoble
+Pandemic (2008) | Editorial: Z-Man Games | Jugadores: 2-4 | Categorías: Cooperativo,Estrategia | Estado:  No disponoble
